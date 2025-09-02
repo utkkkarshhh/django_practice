@@ -21,6 +21,7 @@ INSTALLED_APPS = [
     'service',
     'rest_framework',
     'drf_yasg',
+    "django_extensions",
 ]
 
 MIDDLEWARE = [
