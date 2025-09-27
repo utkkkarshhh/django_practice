@@ -6,11 +6,12 @@ import os
 from service.management.crons import Cron1, Cron2
 
 APP_ENVIRONMENT = os.getenv("APP_ENVIRONMENT", "dev")
+ENABLE_CRONS = bool(os.getenv("DISABLE_CRONS", False))
 
 
 class ManageCrons:
     def __init__(self):
-        if APP_ENVIRONMENT != "local":
+        if APP_ENVIRONMENT != "local" and ENABLE_CRONS:
             self.scheduler = BackgroundScheduler()
 
             self.pool_cron1 = ProcessPoolExecutor(max_workers=1)
@@ -29,6 +30,8 @@ class ManageCrons:
 
             self.scheduler.start()
             print("[Scheduler] Cronjobs started with separate pools")
+        else:
+            print("Crons Disabled")
 
     def submit_to_pool(self, pool, func):
         def wrapper(*args, **kwargs):

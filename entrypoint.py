@@ -4,7 +4,6 @@ from service.management.commands import ManageCrons
 
 APP_ENVIRONMENT = os.getenv('APP_ENVIRONMENT', 'local')
 
-
 class Entrypoint:
     def __init__(self):
         self.setup_environment()

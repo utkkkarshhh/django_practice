@@ -101,7 +101,7 @@ LOGGING = {
     "disable_existing_loggers": False,
     "formatters": {
         "verbose": {
-            "format": "[glyde_api_services] [{levelname}] [{asctime}] : {message}",
+            "format": " [{levelname}] [{asctime}] : {message}",
             "style": "{",
         },
         "simple": {
